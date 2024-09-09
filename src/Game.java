@@ -24,7 +24,7 @@ public class Game {
 
     public void start(){
         frame.setVisible(true);
-        before = System.currentTimeMillis();
+        updaterSyncTime();
 
         while (playing){
             bufferedImage = new BufferedImage(800,600,BufferedImage.TYPE_INT_RGB);
@@ -46,8 +46,12 @@ public class Game {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            before = System.currentTimeMillis();
+            updaterSyncTime();
         }
+    }
+
+    private void updaterSyncTime() {
+        before = System.currentTimeMillis();
     }
 
     private void update(){
