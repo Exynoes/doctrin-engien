@@ -22,6 +22,11 @@ public abstract class Game {
     public final void start(){
         initialize();
         run();
+
+    }
+
+    public final void stop(){
+        playing = false;
     }
 
     private void run() {
@@ -33,5 +38,6 @@ public abstract class Game {
             renderingEngine.drawBufferOnScreen();
             gameTime.synchronize();
         }
+        renderingEngine.stop();
     }
 }
