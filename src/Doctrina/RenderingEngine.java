@@ -2,6 +2,7 @@ package Doctrina;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 public class RenderingEngine {
@@ -44,6 +45,10 @@ public class RenderingEngine {
         panel.setFocusable(true);
         panel.setDoubleBuffered(true);
         frame.add(panel);
+    }
+
+    public void addKeyListener (KeyListener keyListener){
+        panel.addKeyListener(keyListener);
     }
 
     private void initializeFrame() {
