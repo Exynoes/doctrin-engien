@@ -1,3 +1,4 @@
+package Doctrina;
 
 public class GameTime {
 
@@ -26,7 +27,7 @@ public class GameTime {
         long hours = minutes / 60;
         return String.format("%02d:%02d:%02d", hours, minutes % 60, seconds % 60);
     }
-    public GameTime(){
+    protected GameTime(){
         updaterSyncTime();
         gameStartTime = System.currentTimeMillis();
         fpsTimeDelta = 0;
