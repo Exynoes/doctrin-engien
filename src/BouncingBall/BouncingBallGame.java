@@ -13,7 +13,7 @@ public final class BouncingBallGame extends Game {
 
     @Override
     protected void initialize() {
-        ball = new Ball(25);
+        ball = new Ball(20);
     }
 
     @Override

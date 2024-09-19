@@ -1,5 +1,7 @@
 package Doctrina;
 
+import java.util.concurrent.TimeUnit;
+
 public class GameTime {
 
     private static final int FPS_TARGET = 60;
@@ -22,10 +24,13 @@ public class GameTime {
     }
 
     public static String getFormattedElapsedTime() {
-        long seconds = getElapsedTime() / 1000;
-        long minutes = seconds / 60;
-        long hours = minutes / 60;
-        return String.format("%02d:%02d:%02d", hours, minutes % 60, seconds % 60);
+        long time = getElapsedTime();
+        long hours = TimeUnit.MILLISECONDS.toHours(time);
+        time -= TimeUnit.HOURS.toMillis(hours);
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(time);
+        time -= TimeUnit.MINUTES.toMillis(minutes);
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(time);
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
     protected GameTime(){
         updaterSyncTime();
