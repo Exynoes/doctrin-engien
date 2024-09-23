@@ -11,19 +11,20 @@ public class GameTime {
     private static long fpsTimeDelta;
     private static long gameStartTime;
     private long syncTime;
-    public static long getCurrentTime(){
-        return  System.currentTimeMillis();
+
+    public static long getCurrentTime() {
+        return System.currentTimeMillis();
     }
 
-    public static int getCurrentFps(){
+    public static int getCurrentFps() {
         return (currentFps > 0) ? currentFps : fpsCount;
     }
 
-    public static long getElapsedTime(){
+    public static long getElapsedTime() {
         return System.currentTimeMillis() - gameStartTime;
     }
 
-    public static String getFormattedElapsedTime() {
+    public static String getElapsedFormattedTime() {
         long time = getElapsedTime();
         long hours = TimeUnit.MILLISECONDS.toHours(time);
         time -= TimeUnit.HOURS.toMillis(hours);
@@ -32,43 +33,44 @@ public class GameTime {
         long seconds = TimeUnit.MILLISECONDS.toSeconds(time);
         return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
-    protected GameTime(){
-        updaterSyncTime();
+
+    protected GameTime() {
+        updateSyncTime();
         gameStartTime = System.currentTimeMillis();
         fpsTimeDelta = 0;
         currentFps = 0;
     }
 
-    public void synchronize(){
+    public void synchronize() {
         update();
         try {
             Thread.sleep(getSleepTime());
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        updaterSyncTime();
+        updateSyncTime();
     }
 
-    private void update(){
+    private void update() {
         fpsCount++;
-        long currentSecond = getElapsedTime() / 1000;
-        if (fpsTimeDelta != currentSecond){
+        long currentSecond = TimeUnit.MILLISECONDS.toSeconds(getElapsedTime());
+        if (fpsTimeDelta != currentSecond) {
             currentFps = fpsCount;
             fpsCount = 0;
         }
         fpsTimeDelta = currentSecond;
     }
 
-    private long getSleepTime(){
+    private long getSleepTime() {
         long targetTime = 1000L / FPS_TARGET;
         long sleep = targetTime - (System.currentTimeMillis() - syncTime);
-        if (sleep < 0){
+        if (sleep < 0) {
             sleep = 4;
         }
         return sleep;
     }
 
-    private void updaterSyncTime() {
+    private void updateSyncTime() {
         syncTime = System.currentTimeMillis();
     }
 }

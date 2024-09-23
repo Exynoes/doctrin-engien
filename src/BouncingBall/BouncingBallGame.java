@@ -13,21 +13,22 @@ public final class BouncingBallGame extends Game {
 
     @Override
     protected void initialize() {
-        ball = new Ball(20);
+        ball = new Ball(25);
     }
 
     @Override
-    public void update(){
+    protected void update() {
         ball.update();
-        if (ball.hasTouched()){
+        if (ball.hasTouched()) {
             score += 10;
         }
     }
+
     @Override
-    public void draw(Canvas canvas){
+    protected void draw(Canvas canvas) {
         ball.draw(canvas);
-        canvas.drawString("Score: " + score,10,20,Color.WHITE);
-        canvas.drawString(GameTime.getFormattedElapsedTime(),10,40,Color.WHITE);
-        canvas.drawString("FPS:" + GameTime.getCurrentFps(),10,60,Color.WHITE);
+        canvas.drawString("Score: " + score, 10, 20, Color.WHITE);
+        canvas.drawString(GameTime.getElapsedFormattedTime(), 10, 40, Color.WHITE);
+        canvas.drawString("FPS: " + GameTime.getCurrentFps(), 10, 60, Color.WHITE);
     }
 }
