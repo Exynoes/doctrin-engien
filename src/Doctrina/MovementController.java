@@ -10,10 +10,10 @@ public class MovementController extends Controller{
     private int rightKey = KeyEvent.VK_RIGHT;
 
     public MovementController(){
-        bindkey(upKey);
-        bindkey(downKey);
-        bindkey(leftKey);
-        bindkey(rightKey);
+        bindKey(upKey);
+        bindKey(downKey);
+        bindKey(leftKey);
+        bindKey(rightKey);
     }
 
     public boolean isLeftPressed(){
@@ -38,25 +38,25 @@ public class MovementController extends Controller{
 
     public void setDownKey(int keyCode){
         unbindKey(downKey);
-        bindkey(keyCode);
+        bindKey(keyCode);
         this.downKey = keyCode;
     }
 
     public void setUpKey(int keyCode){
         unbindKey(upKey);
-        bindkey(keyCode);
+        bindKey(keyCode);
         this.upKey = keyCode;
     }
 
     public void setLeftKeyKey(int keyCode){
         unbindKey(leftKey);
-        bindkey(keyCode);
+        bindKey(keyCode);
         this.leftKey = keyCode;
     }
 
     public void setRightKey(int keyCode){
         unbindKey(rightKey);
-        bindkey(keyCode);
+        bindKey(keyCode);
         this.rightKey = keyCode;
     }
 }

@@ -10,9 +10,10 @@ public abstract class Controller implements KeyListener {
 
     public Controller(){
         pressedKeys = new HashMap<>();
+        RenderingEngine.getInstance().addKeyListener(this);
     }
 
-    protected void bindkey(int keyCode){
+    protected void bindKey(int keyCode){
         pressedKeys.put(keyCode,false);
 
     }
