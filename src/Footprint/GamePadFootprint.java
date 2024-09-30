@@ -1,7 +1,6 @@
 package Footprint;
 
 import Doctrina.MovementController;
-import MovingRectangle.GamePad;
 
 import java.awt.event.KeyEvent;
 

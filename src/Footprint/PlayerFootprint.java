@@ -1,7 +1,6 @@
 package Footprint;
 
 import Doctrina.Canvas;
-import MovingRectangle.Player;
 
 import java.awt.*;
 
@@ -15,7 +14,7 @@ public class PlayerFootprint {
         this.gamePadFootprint = gamePadFootprint;
         x = 200;
         y = 200;
-        speed = 10;
+        speed = 3;
     }
 
     public void update(){
@@ -32,5 +31,9 @@ public class PlayerFootprint {
 
     public void draw(Canvas canvas){
         canvas.drawRectangle(x,y,20,60, Color.WHITE);
+    }
+
+    public Footprint layFootprint(){
+        return new Footprint(x,y);
     }
 }
