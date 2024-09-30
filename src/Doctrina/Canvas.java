@@ -19,6 +19,10 @@ public class Canvas {
         graphics.fillOval(x,y,radius * 2,radius * 2);
     }
 
+    public void drawRectangle(StaticEntity staticEntity, Paint paint){
+        drawRectangle(staticEntity.x, staticEntity.y,staticEntity.width,staticEntity.height, paint);
+    }
+
     public void drawRectangle(int x, int y, int width, int height, Paint paint){
         graphics.setPaint(paint);
         graphics.fillRect(x,y,width,height);
