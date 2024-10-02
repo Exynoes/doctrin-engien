@@ -1,27 +1,26 @@
 package Footprint;
 
 import Doctrina.Canvas;
+import Doctrina.ControllableEntity;
 import Doctrina.MovableEntity;
 
 import java.awt.*;
 
-public class PlayerFootprint extends MovableEntity {
-    private GamePadFootprint gamePadFootprint;
-
+public class PlayerFootprint extends ControllableEntity {
 
     public PlayerFootprint(GamePadFootprint gamePadFootprint){
-        this.gamePadFootprint = gamePadFootprint;
+        super(gamePadFootprint);
         teleport(200,200);
         setDimension(20,60);
         setSpeed(3);
     }
 
+    @Override
     public void update(){
-        if (gamePadFootprint.isMoving()){
-            move(gamePadFootprint.getDirection());
-        }
+        moveWithController();
     }
 
+    @Override
     public void draw(Canvas canvas){
         canvas.drawRectangle(this, Color.WHITE);
     }
