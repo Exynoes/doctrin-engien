@@ -4,30 +4,41 @@ import Doctrina.Canvas;
 import Doctrina.Game;
 
 import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class FootprintGame extends Game {
 
-    private GamePadFootprint gamePadFootprint;
-    private PlayerFootprint playerFootprint;
+    private GamePadFootprint gamePadFootprintOne;
+    private GamePadFootprint gamePadFootprintTwo;
+    private PlayerFootprint playerFootprintOne;
+    private PlayerFootprint playerFootprintTwo;
     private ArrayList<Footprint> footprints;
 
     @Override
     protected void initialize() {
-        gamePadFootprint = new GamePadFootprint();
-        playerFootprint = new PlayerFootprint(gamePadFootprint);
+        gamePadFootprintOne = new GamePadFootprint();
+        playerFootprintOne = new PlayerFootprint(gamePadFootprintOne);
+
+        gamePadFootprintTwo = new GamePadFootprint();
+        gamePadFootprintTwo.useWasdKeys();
+
+        playerFootprintTwo = new PlayerFootprint(gamePadFootprintTwo);
+
         footprints = new ArrayList<>();
     }
 
     @Override
     protected void update() {
-        if (gamePadFootprint.isQuitKepPressed()){
+        if (gamePadFootprintOne.isQuitKepPressed()){
             stop();
         }
-        playerFootprint.update();
-        if (gamePadFootprint.isMoving()){
-            footprints.add(playerFootprint.layFootprint());
+        playerFootprintOne.update();
+        playerFootprintTwo.update();
+        if (gamePadFootprintOne.isMoving()){
+            footprints.add(playerFootprintOne.layFootprint());
+        }
+        if (gamePadFootprintTwo.isMoving()){
+            footprints.add(playerFootprintTwo.layFootprint());
         }
     }
 
@@ -37,6 +48,7 @@ public class FootprintGame extends Game {
         for (Footprint footprint: footprints) {
             footprint.draw(canvas);
         }
-        playerFootprint.draw(canvas);
+        playerFootprintOne.draw(canvas);
+        playerFootprintTwo.draw(canvas);
     }
 }

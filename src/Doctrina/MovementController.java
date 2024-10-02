@@ -16,6 +16,13 @@ public class MovementController extends Controller{
         bindKey(rightKey);
     }
 
+    public void useWasdKeys(){
+        setUpKey(KeyEvent.VK_W);
+        setDownKey(KeyEvent.VK_S);
+        setLeftKey(KeyEvent.VK_A);
+        setRightKey(KeyEvent.VK_D);
+    }
+
     public Direction getDirection(){
         if (isDownPressed()){
             return Direction.DOWN;
@@ -64,7 +71,7 @@ public class MovementController extends Controller{
         this.upKey = keyCode;
     }
 
-    public void setLeftKeyKey(int keyCode){
+    public void setLeftKey(int keyCode){
         unbindKey(leftKey);
         bindKey(keyCode);
         this.leftKey = keyCode;
