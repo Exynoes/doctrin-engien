@@ -8,7 +8,7 @@ public abstract class Game {
 
     protected abstract void initialize();
     protected abstract void update();
-    protected abstract void  draw(Canvas canvas);
+    protected abstract void draw(Canvas canvas);
 
     public Game(){
         renderingEngine = RenderingEngine.getInstance();

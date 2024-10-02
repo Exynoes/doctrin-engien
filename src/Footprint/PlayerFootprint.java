@@ -1,36 +1,29 @@
 package Footprint;
 
 import Doctrina.Canvas;
+import Doctrina.MovableEntity;
 
 import java.awt.*;
 
-public class PlayerFootprint {
+public class PlayerFootprint extends MovableEntity {
     private GamePadFootprint gamePadFootprint;
-    private int x;
-    private int y;
-    private int speed;
+
 
     public PlayerFootprint(GamePadFootprint gamePadFootprint){
         this.gamePadFootprint = gamePadFootprint;
-        x = 200;
-        y = 200;
-        speed = 3;
+        teleport(200,200);
+        setDimension(20,60);
+        setSpeed(3);
     }
 
     public void update(){
-        if (gamePadFootprint.isDownPressed()){
-            y += speed;
-        } else if (gamePadFootprint.isUpPressed()){
-            y -= speed;
-        } else if (gamePadFootprint.isLeftPressed()){
-            x -= speed;
-        } else if (gamePadFootprint.isRightPressed()){
-            x += speed;
+        if (gamePadFootprint.isMoving()){
+            move(gamePadFootprint.getDirection());
         }
     }
 
     public void draw(Canvas canvas){
-        canvas.drawRectangle(x,y,20,60, Color.WHITE);
+        canvas.drawRectangle(this, Color.WHITE);
     }
 
     public Footprint layFootprint(){

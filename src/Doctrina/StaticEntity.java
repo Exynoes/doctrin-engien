@@ -6,7 +6,7 @@ public abstract class StaticEntity {
     protected int width;
     protected int height;
 
-    public  abstract void draw(Canvas canvas);
+    public abstract void draw(Canvas canvas);
 
     public void teleport(int x, int y){
         this.x = x;
