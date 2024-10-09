@@ -9,12 +9,21 @@ public class TankGame extends Game {
     private GamePadTank gamePadTank;
     private Tank tank;
     private ArrayList<Missile> missiles;
+    private ArrayList<Brick> bricks;
 
     @Override
     protected void initialize() {
         gamePadTank = new GamePadTank();
         tank = new Tank(gamePadTank);
         missiles = new ArrayList<>();
+        bricks = new ArrayList<>();
+        bricks.add(new Brick(500,500));
+        bricks.add(new Brick(484,542));
+        bricks.add(new Brick(600,360));
+        bricks.add(new Brick(500,140));
+        bricks.add(new Brick(350,360));
+        bricks.add(new Brick(240,450));
+
     }
 
     @Override
@@ -36,6 +45,9 @@ public class TankGame extends Game {
         tank.draw(canvas);
         for (Missile missile: missiles){
             missile.draw(canvas);
+        }
+        for (Brick brick: bricks){
+            brick.draw(canvas);
         }
     }
 }
